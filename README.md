@@ -1,2 +1,3 @@
 # lucaslindolegaleal-25-pwi
-oijoijoijoijoijoij
+meu dinossauro lindinho fofinho
+
