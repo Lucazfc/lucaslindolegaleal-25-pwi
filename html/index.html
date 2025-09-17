@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify Clone</title>
+    <style>
+        /* Resetando o estilo padrão do navegador */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #121212;
+            color: white;
+            display: flex;
+            height: 100vh;
+            flex-direction: column;
+        }
+
+        /* Barra de navegação */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #1db954;
+            padding: 15px 30px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 10;
+        }
+
+        .navbar .logo img {
+            width: 100px;
+        }
+
+        .navbar .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .navbar .nav-links li {
+            margin: 0 20px;
+        }
+
+        .navbar .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+            text-transform: uppercase;
+        }
+
+        .navbar .profile img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+        }
+
+        /* Layout principal */
+        .main-content {
+            display: flex;
+            margin-top: 60px;
+            flex-grow: 1;
+        }
+
+        /* Barra lateral */
+        .sidebar {
+            width: 240px;
+            background-color: #181818;
+            padding-top: 20px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .sidebar a {
+            color: #b3b3b3;
+            text-decoration: none;
+            font-size: 16px;
+            margin: 10px 0;
+            padding: 10px 20px;
+            width: 100%;
+            text-transform: uppercase;
+        }
+
+        .sidebar a:hover {
+            background-color: #282828;
+            color: white;
+        }
+
+        /* Área principal (conteúdo central) */
+        .content {
+            flex-grow: 1;
+            padding: 20px;
+        }
+
+        /* Seção de playlists em destaque */
+        .featured-playlist {
+            margin-bottom: 40px;
+        }
+
+        .featured-playlist h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .playlist-container {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .playlist-card {
+            width: 250px;
+            background-color: #333;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .playlist-card:hover {
+            transform: scale(1.05);
+        }
+
+        .playlist-card img {
+            width: 100%;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .playlist-card h3 {
+            font-size: 18px;
+            color: #b3b3b3;
+        }
+
+        /* Rodapé */
+        footer {
+            text-align: center;
+            background-color: #121212;
+            padding: 20px;
+            font-size: 14px;
+            color: #b3b3b3;
+            margin-top: auto;
+        }
+    </style>
+</head>
+<body>
+    <!-- Barra de navegação -->
+    <div class="navbar">
+        <div class="logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/67/Spotify_logo_with_text.svg" alt="Logo Spotify">
+        </div>
+        <ul class="nav-links">
+            <li><a href="#">Início</a></li>
+            <li><a href="#">Buscar</a></li>
+            <li><a href="#">Sua Biblioteca</a></li>
+        </ul>
+        <div class="profile">
+            <img src="https://i.pinimg.com/originals/7d/22/64/7d2264bb784d35ac0d168ae1d2b34d76.png" alt="Perfil">
+        </div>
+    </div>
+
+    <!-- Layout principal -->
+    <div class="main-content">
+        <!-- Barra lateral -->
+        <div class="sidebar">
+            <a href="#">Home</a>
+            <a href="#">Buscar</a>
+            <a href="#">Sua Biblioteca</a>
+            <a href="#">Playlist</a>
+            <a href="#">Podcasts</a>
+            <a href="#">Sua Música</a>
+        </div>
+
+        <!-- Conteúdo principal -->
+        <div class="content">
+            <section class="featured-playlist">
+                <h2>Playlists em Destaque</h2>
+                <div class="playlist-container">
+                    <div class="playlist-card">
+                        <img src="https://via.placeholder.com/250x250" alt="Playlist 1">
+                        <h3>Playlist 1</h3>
+                    </div>
+                    <div class="playlist-card">
+                        <img src="https://via.placeholder.com/250x250" alt="Playlist 2">
+                        <h3>Playlist 2</h3>
+                    </div>
+                    <div class="playlist-card">
+                        <img src="https://via.placeholder.com/250x250" alt="Playlist 3">
+                        <h3>Playlist 3</h3>
+                    </div>
+                    <div class="playlist-card">
+                        <img src="https://via.placeholder.com/250x250" alt="Playlist 4">
+                        <h3>Playlist 4</h3>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- Rodapé -->
+    <footer>
+        <p>&copy; 2025 Spotify Clone. Todos os direitos reservados.</p>
+    </footer>
+</body>
+</html>
