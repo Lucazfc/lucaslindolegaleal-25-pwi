@@ -4,65 +4,372 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lucasfy Music</title>
-    <link rel="stylesheet" href="styles.css"> 
-</head>
-<body style="background-color: rgb(131, 255, 131);">
+    <style>
+        :root {
+            --green: #1fb35a;
+            --black: #0b0b0b;
+            --white: #ffffff;
+            --dark-gray: #121212;
+            --light-gray: rgba(255, 255, 255, 0.05);
+            --yellow-star: #fdd835;
+        }
 
-    <!-- Cabeçalho -->
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: linear-gradient(180deg, var(--black) 0%, #07120b 100%);
+            color: var(--white);
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 18px 24px;
+            background-color: var(--green);
+            color: var(--black);
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--black);
+            font-weight: bold;
+        }
+
+        section {
+            margin: 20px;
+            padding: 20px;
+            border-radius: 12px;
+            background: var(--light-gray);
+        }
+
+        h2, h3 {
+            color: var(--green);
+        }
+        
+        /* Estilo para a barra de pesquisa */
+        #search-container {
+            margin-bottom: 20px;
+        }
+
+        #searchInput {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid var(--green);
+            background-color: var(--dark-gray);
+            color: var(--white);
+            font-size: 16px;
+        }
+
+        .artist {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 20px;
+            transition: transform 0.2s; /* Efeito suave */
+        }
+        
+        .artist:hover {
+            transform: scale(1.01); /* Leve zoom ao passar o mouse */
+        }
+
+        .artist img {
+            border-radius: 10px;
+            width: 180px;
+            height: 120px;
+            object-fit: cover;
+        }
+
+        .artist ul {
+            list-style: none;
+        }
+
+        /* --- MODIFICADO AQUI --- */
+        /* Estilo para cada item de música */
+        .artist li {
+            padding: 8px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer; /* <-- ADICIONADO: Indica que é clicável */
+            transition: background-color 0.2s;
+        }
+
+        /* ADICIONADO: Efeito hover para a música */
+        .artist li:hover {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+        /* --- FIM DA MODIFICAÇÃO --- */
+
+
+        /* Estilo para o botão de favoritar */
+        .favorite-btn {
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--white);
+            transition: color 0.2s;
+        }
+
+        .favorite-btn.favorited {
+            color: var(--yellow-star); /* Cor da estrela quando favoritada */
+        }
+
+        /* Estilo para a lista de favoritos */
+        #lista-favoritas li {
+             padding: 5px;
+             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        #sem-favoritas {
+            color: #888;
+        }
+
+        audio {
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        footer {
+            text-align: center;
+            background: var(--green);
+            color: var(--black);
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+
     <header>
-        <div style="background-color: greenyellow;">
-        <h1>Bem-vindo ao Lucasfy Music!</h1>
+        <h1>Lucasfy Music</h1>
         <nav>
             <ul>
+                <li><a href="#favoritas">Favoritas</a></li>
                 <li><a href="#cantores">Cantores</a></li>
                 <li><a href="#sobre">Sobre</a></li>
             </ul>
         </nav>
-        </div>
     </header>
 
-    <!-- Seção de Áudio -->
-   <div style="background-color: limegreen;">
     <section id="audio">
         <h2>Tocando Agora</h2>
-        <audio controls>
-            <source src="./html/Michel Teló - Ai Se Eu Te Pego - Video Oficial (Assim você me mata) [hcm55lU9knw].mp3" type="audio/mp3">
+        <audio controls id="audio-player">
+             <source src="./html/Michel Teló - Ai Se Eu Te Pego - Video Oficial (Assim você me mata) [hcm55lU9knw].mp3" type="audio/mp3" id="audio-source">
         </audio>
     </section>
-</div>
-    <!-- Playlist -->
-    <h2>Cantores</h2>
-    <section id="cantores">
-        <img src="./image/jorgemateuss.jpg" width="300" height="200">
-        <h2>Jorge & Mateus</h2>
-        <ul>
-            <li><a href="#">Pode Chorar</a></li>
-            <section id="audio">
-                <audio controls>
-                    <source src="./html/podechorar.mp3" type="audio/mp3">
-                </audio>
-            </section>
-            <li><a href="#">Amo Noite e Dia</a></li>
-            <section id="audio">
-                <audio controls>
-                    <source src="./html/amonoiteedia.mp3" type="audio/mp3">
-                </audio>
-            </section>
-
-            <li><a href="#">Os Anjos Cantam</a></li>
-            <section id="audio">
-                <audio controls>
-                    <source src="./html/anjos.mp3" type="audio/mp3">
-                </audio>
-            </section>
-
-        </ul>
+    <section id="favoritas">
+        <h2>⭐ Músicas Favoritas</h2>
+        <ul id="lista-favoritas">
+            </ul>
+        <p id="sem-favoritas">Você ainda não favoritou nenhuma música.</p>
     </section>
 
-    <!-- Sobre -->
+    <section id="cantores">
+        <h2>Cantores</h2>
+
+        <div id="search-container">
+            <input type="text" id="searchInput" placeholder="Buscar por artista ou música...">
+        </div>
+
+        <div class="artist" data-artist="Kali Uchis">
+            <img src="./image/kaliuchis.jpg" alt="Kali Uchis">
+            <div>
+                <h3>Kali Uchis</h3>
+                <ul>
+                    <li data-src="./musicas/kali_uchis_telepatia.mp3">Telepatía <span class="favorite-btn" data-song-id="Kali Uchis-Telepatía">☆</span></li>
+                    <li data-src="./musicas/kali_uchis_after_the_storm.mp3">After The Storm <span class="favorite-btn" data-song-id="Kali Uchis-After The Storm">☆</span></li>
+                    <li data-src="./musicas/kali_uchis_no_hay_ley.mp3">No Hay Ley <span class="favorite-btn" data-song-id="Kali Uchis-Dead To Me">☆</span></li>
+                    <li data-src="./musicas/kali_uchis_moonligth.mp3">Moonligth <span class="favorite-btn" data-song-id="Kali Uchis-Lottery">☆</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="artist" data-artist="Jorge & Mateus">
+            <img src="./image/jorgemateuss.jpg" alt="Jorge & Mateus">
+            <div>
+                <h3>Jorge & Mateus</h3>
+                <ul>
+                    <li data-src="./musicas/jorge_mateus_pode_chorar.mp3">Pode Chorar <span class="favorite-btn" data-song-id="Jorge & Mateus-Pode Chorar">☆</span></li>
+                    <li data-src="./musicas/jorge_mateus_amo_noite_dia.mp3">Amo Noite e Dia <span class="favorite-btn" data-song-id="Jorge & Mateus-Amo Noite e Dia">☆</span></li>
+                    <li data-src="./musicas/jorge_mateus_os_anjos_cantam.mp3">Os Anjos Cantam <span class="favorite-btn" data-song-id="Jorge & Mateus-Os Anjos Cantam">☆</span></li>
+                    <li data-src="./musicas/jorge_mateus_cheirosa.mp3">Cheirosa <span class="favorite-btn" data-song-id="Jorge & Mateus-Cheirosa">☆</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="artist" data-artist="Bin">
+            <img src="./image/bin.jpg" alt="Bin">
+            <div>
+                <h3>Bin</h3>
+                <ul>
+                    <li data-src="./musicas/bin_saturno.mp3">Saturno <span class="favorite-btn" data-song-id="Bin-Noite Urbana">☆</span></li>
+                    <li data-src="./musicas/bin_penelope.mp3">Penelope <span class="favorite-btn" data-song-id="Bin-Ruas e Luzes">☆</span></li>
+                    <li data-src="./musicas/bin_marilia_mendonca.mp3">Marília Mendonça <span class="favorite-btn" data-song-id="Bin-Fluxo">☆</span></li>
+                    <li data-src="./musicas/bin_quase_uma_semana.mp3">Quase uma Semana <span class="favorite-btn" data-song-id="Bin-Céu de Pedra">☆</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="artist" data-artist="Eminem">
+            <img src="./image/eminem.jpg" alt="Eminem">
+            <div>
+                <h3>Eminem</h3>
+                <ul>
+                    <li data-src="./musicas/eminem_mockingbird.mp3">Mockingbird <span class="favorite-btn" data-song-id="Eminem-Lose Yourself">☆</span></li>
+                    <li data-src="./musicas/eminem_not_afraid.mp3">Not Afraid <span class="favorite-btn" data-song-id="Eminem-Stan">☆</span></li>
+                    <li data-src="./musicas/eminem_without_me.mp3">Without Me <span class="favorite-btn" data-song-id="Eminem-Without Me">☆</span></li>
+                    <li data-src="./musicas/eminem_the_real_slim_shady.mp3">The Real Slim Shady <span class="favorite-btn" data-song-id="Eminem-The Real Slim Shady">☆</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="artist" data-artist="Thalles Roberto">
+            <img src="./image/thallesroberto.jpg" alt="Thalles Roberto">
+            <div>
+                <h3>Thalles Roberto</h3>
+                <ul>
+                    <li data-src="./musicas/thalles_arde_outra_vez.mp3">Arde Outra Vez <span class="favorite-btn" data-song-id="Thalles Roberto-Faz Chover">☆</span></li>
+                    <li data-src="./musicas/thalles_deus_da_minha_vida.mp3">Deus da Minha Vida <span class="favorite-btn" data-song-id="Thalles Roberto-Restituição">☆</span></li>
+                    <li data-src="./musicas/thalles_eu_escolho_deus.mp3">Eu Escolho Deus <span class="favorite-btn" data-song-id="Thalles Roberto-Deus do Impossível">☆</span></li>
+                    <li data-src="./musicas/thalles_eu_sou_blindado.mp3">Eu Sou Blindado <span class="favorite-btn" data-song-id="Thalles Roberto-A Restauração">☆</span></li>
+                </ul>
+            </div>
+        </div>
+        </section>
+
     <section id="sobre">
         <h2>Sobre o Site</h2>
-        <p>Este site não é apenas um site de música simples onde você pode ouvir suas faixas favoritas e explorar novas playlists, mas também, uma cópia barata do spotfy</p>
+        <p>O Lucasfy Music é um site de música inspirado (pirateado) no Spotify!</p>
     </section>
 
+    <footer>
+        <p>Lucasfy Music © 2025</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const searchInput = document.getElementById('searchInput');
+            const artists = document.querySelectorAll('.artist');
+            const favoriteButtons = document.querySelectorAll('.favorite-btn');
+            const favoritesList = document.getElementById('lista-favoritas');
+            const noFavoritesMsg = document.getElementById('sem-favoritas');
+
+            // --- ADICIONADO: Seletores do Player ---
+            const audioPlayer = document.getElementById('audio-player');
+            const audioSource = document.getElementById('audio-source');
+            const songItems = document.querySelectorAll('.artist li'); // Pega todos os <li> das músicas
+            
+            // Carrega os favoritos salvos no navegador ou cria uma lista vazia
+            let favorites = JSON.parse(localStorage.getItem('lucasfyFavorites')) || [];
+
+            // --- FUNÇÃO DE PESQUISA ---
+            searchInput.addEventListener('input', (event) => {
+                const searchTerm = event.target.value.toLowerCase();
+
+                artists.forEach(artistDiv => {
+                    const artistName = artistDiv.dataset.artist.toLowerCase();
+                    const songs = Array.from(artistDiv.querySelectorAll('li')).map(li => li.textContent.toLowerCase());
+                    
+                    const matches = artistName.includes(searchTerm) || songs.some(song => song.includes(searchTerm));
+                    
+                    artistDiv.style.display = matches ? 'flex' : 'none';
+                });
+            });
+
+            // --- FUNÇÕES DE FAVORITOS ---
+            favoriteButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const songId = button.dataset.songId;
+                    
+                    if (favorites.includes(songId)) {
+                        favorites = favorites.filter(id => id !== songId);
+                        button.classList.remove('favorited');
+                        button.textContent = '☆';
+                    } else {
+                        favorites.push(songId);
+                        button.classList.add('favorited');
+                        button.textContent = '★';
+                    }
+                    
+                    localStorage.setItem('lucasfyFavorites', JSON.stringify(favorites));
+                    updateFavoritesList();
+                });
+            });
+
+            // Função para atualizar a lista de favoritos na tela
+            function updateFavoritesList() {
+                favoritesList.innerHTML = '';
+                
+                if (favorites.length === 0) {
+                    noFavoritesMsg.style.display = 'block';
+                } else {
+                    noFavoritesMsg.style.display = 'none';
+                    favorites.forEach(songId => {
+                        const [artist, song] = songId.split('-');
+                        const li = document.createElement('li');
+                        li.textContent = `${song} - ${artist}`;
+                        favoritesList.appendChild(li);
+                    });
+                }
+            }
+            
+            // Função para carregar o estado inicial dos botões e da lista
+            function initializeFavorites() {
+                 favoriteButtons.forEach(button => {
+                     if (favorites.includes(button.dataset.songId)) {
+                          button.classList.add('favorited');
+                          button.textContent = '★';
+                     }
+                 });
+                 updateFavoritesList();
+            }
+
+            // Inicia as funções de favoritos quando a página carrega
+            initializeFavorites();
+
+
+            // --- ADICIONADO: LÓGICA PARA TOCAR MÚSICAS ---
+            songItems.forEach(song => {
+                song.addEventListener('click', (event) => {
+                    
+                    // Verifica se o clique NÃO foi no botão de favorito (o <span>)
+                    if (!event.target.classList.contains('favorite-btn')) {
+                        
+                        const songSrc = song.dataset.src; // Pega o caminho do MP3 (ex: "./musicas/telepatia.mp3")
+                        
+                        // Se o <li> tiver um caminho de música (data-src)
+                        if (songSrc) {
+                            audioSource.src = songSrc;     // 1. Atualiza o caminho no player
+                            audioPlayer.load();            // 2. Carrega a nova música
+                            audioPlayer.play();            // 3. Toca a música
+                        } else {
+                            // Opcional: Avisa se o MP3 não foi definido
+                            console.warn("Música sem 'data-src':", song.textContent);
+                        }
+                    }
+                });
+            });
+            // --- FIM DO BLOCO ADICIONADO ---
+
+        });
+    </script>
+</body>
 </html>
